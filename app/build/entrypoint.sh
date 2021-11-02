@@ -8,6 +8,6 @@ done
 
 echo "PostgreSQL started"
 
-# npm run migrate up
+npm run migrate up
 
 exec "$@"
