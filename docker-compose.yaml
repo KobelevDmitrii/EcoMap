@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    build: ./app
+    command: node app
+    env_file:
+      - ./.env
+    ports:
+      - ${API_PORT}:${API_PORT}
+    depends_on:
+      - pg
+
+  client:
+    build: ./frontend
+    env_file:
+      - ./.env
+    ports:
+      - ${CLIENT_PORT}:${CLIENT_PORT}
+
+  pg:
+    image: postgres
+    env_file:
+      - ./.env
+    volumes:
+      - database-data:/var/lib/fs/postgresql/data/
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+
+volumes:
+  database-data:
