@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+/* 
+  Это гланый компонент программы, который
+  позволяет собрать главную страницу в единое целое
+*/
+
+import React from 'react';
+import Header from './componens/Header';
+import Map from './componens/Map.js';
+import About from './componens/About';
+import Footer from './componens/Footer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="wrapper">
+        <Header></Header>
+        <Map></Map>
+        <About></About>
+      </div>
+      <Footer></Footer>
     </div>
   );
 }
