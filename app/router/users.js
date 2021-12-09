@@ -9,7 +9,7 @@ const router = express.Router();
 
 const registerSchema = Joi.object().keys({
   email: Joi.string().email().required(),
-  hashed_password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")).required(),
+  password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")).required(),
   firstname: Joi.string().required(),
   lastname: Joi.string().required(),
 });
@@ -23,14 +23,14 @@ router.route("/register").post(async (req, res) => {
         .send({ message: "invalid user data: " + result.error });
     }
 
-    const { email, hashed_password, firstname, lastname } = req.body;
+    const { email, password, firstname, lastname } = req.body;
 
     const user = await Users.findByEmail(email);
     if (user) {
       return res.status(400).json({ message: "email already registered" });
     }
 
-    const { hash, salt } = await userModel.hashPassword(hashed_password);
+    const { hash, salt } = await userModel.hashPassword(password);
 
     const newUser = {
       email: email,
