@@ -6,6 +6,7 @@ const up = async (pgm) => {
     email: { type: "varchar(200)", notNull: true, unique: true },
     hashed_password: { type: "varchar(400)", notNull: true },
     role: { type: "varchar(50)", notNull: true, default: "user" },
+    salt: { type: "varchar(400)", notNull: true },
   });
 
   pgm.createTable("places", {
