@@ -97,26 +97,4 @@ router.route("/login").post(async (req, res) => {
   }
 });
 
-router.route("/:email").get(async (req, res) => {
-  try {
-    const email = req.params.email;
-    const user = await userModel.findByEmail(email);
-    
-    if (!user) {
-      return res.status(404).json({ message: "user not found" });
-    }
-
-    const res = {
-      email: user.email,
-      user: user.password,
-    };
-
-    return res;
-
-  } catch (error) {
-    throw new Error("get user");
-  }
-});
-
-
 module.exports = router;
