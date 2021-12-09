@@ -52,9 +52,71 @@ router.route("/register").post(async (req, res) => {
     );
 
     return res.status(201).json({ token });
+    
   } catch (error) {
     throw new Error("register user: " + error);
   }
 });
+
+const loginSchema = Joi.object().keys({
+  email: Joi.string().email().required(),
+  password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")).required(),
+});
+
+router.route("/login").post(async (req, res) => {
+  try {
+    const result = loginSchema.validate(req.body);
+    if (result.error) {
+      return res
+        .status(422)
+        .send({ message: "invalid user data: " + result.error });
+    }
+
+    const { email, password } = req.body;
+
+    const user = await Users.findByEmail(email);
+    if (!user) {
+      return res.status(400).json({ message: "user not found" });
+    }
+
+    const { hash } = await userModel.hashPassword(password, user.salt);
+    if (user.password !== hash) {
+      return res.status(400).json({ message: "invalid password" });
+    }
+
+    const token = jwt.sign(
+      { user_id: user.id, email: user.email },
+      process.env.TOKEN_KEY,
+      { expiresIn: "1h" }
+    );
+
+    return res.status(200).json({ token });
+
+  } catch (error) {
+    throw new Error("login user: " + error);
+  }
+});
+
+router.route("/:email").get(async (req, res) => {
+  try {
+    const email = req.params.email;
+    const user = await userModel.findByEmail(email);
+    
+    if (!user) {
+      return res.status(404).json({ message: "user not found" });
+    }
+
+    const res = {
+      email: user.email,
+      user: user.password,
+    };
+
+    return res;
+
+  } catch (error) {
+    throw new Error("get user");
+  }
+});
+
 
 module.exports = router;
