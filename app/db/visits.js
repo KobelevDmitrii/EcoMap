@@ -19,11 +19,7 @@ const save = async (visit) => {
   try {
     const query = {
       text: "INSERT INTO visits (user_id, place_id, counter) VALUES ($1, $2, $3) RETURNING *",
-      values: [
-        visit.user_id,
-        visit.place_id,
-        visit.counter,
-      ],
+      values: [visit.user_id, visit.place_id, visit.counter],
     };
 
     const res = await db.query(query);
