@@ -52,5 +52,6 @@ const save = async (place) => {
 
 module.exports = {
   findById,
+  findAll,
   save,
 };

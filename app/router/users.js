@@ -79,7 +79,7 @@ router.route("/login").post(async (req, res) => {
     }
 
     const { hash } = await userModel.hashPassword(password, user.salt);
-    if (user.password !== hash) {
+    if (user.hashed_password !== hash) {
       return res.status(400).json({ message: "invalid password" });
     }
 
