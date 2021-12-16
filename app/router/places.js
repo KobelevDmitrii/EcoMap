@@ -6,7 +6,7 @@ const Places = require("../db/places");
 
 const router = express.Router();
 
-routes.route("/").get(async (req, res) => {
+router.route("/").get(async (req, res) => {
   try {
     const placesList = await Places.findAll();
 
