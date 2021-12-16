@@ -52,7 +52,6 @@ router.route("/register").post(async (req, res) => {
     );
 
     return res.status(201).json({ token });
-    
   } catch (error) {
     throw new Error("register user: " + error);
   }
@@ -80,7 +79,7 @@ router.route("/login").post(async (req, res) => {
     }
 
     const { hash } = await userModel.hashPassword(password, user.salt);
-    if (user.password !== hash) {
+    if (user.hashed_password !== hash) {
       return res.status(400).json({ message: "invalid password" });
     }
 
@@ -91,7 +90,6 @@ router.route("/login").post(async (req, res) => {
     );
 
     return res.status(200).json({ token });
-
   } catch (error) {
     throw new Error("login user: " + error);
   }
