@@ -30,8 +30,8 @@ code {
 /* Обычный */
 @font-face {
   font-family: "Montserrat";
-  src: url("./founs/Montserrat-Regular.woff2"),
-    url("./founs/Montserrat-Regular.woff");
+  src: url("./fonts/Montserrat-Regular.woff2"),
+    url("./fonts/Montserrat-Regular.woff");
   font-display: swap;
   font-style: normal;
   font-weight: 400;
@@ -39,8 +39,8 @@ code {
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./founs/Montserrat-SemiBold.woff2"),
-    url("./founs/Montserrat-SemiBold.woff");
+  src: url("./fonts/Montserrat-SemiBold.woff2"),
+    url("./fonts/Montserrat-SemiBold.woff");
   font-display: swap;
   font-style: normal;
   font-weight: 600;
@@ -292,3 +292,91 @@ h3 {
 
   height: 500px;
 }
+
+.login{
+  background: url(./img/background2.png) no-repeat;
+}
+
+.cart{
+  margin: 68px auto;
+  padding: 66px 59px;
+  width: 518px;
+  height: 524px;
+
+  display: flex;
+  justify-content: center;
+
+  background: #F9F9F9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  border-radius: 20px;
+}
+
+.flexColum{
+  display: flex;
+  flex-direction: column;
+}
+
+
+hr{
+  width: 391px;
+  background-color: #000000;
+}
+
+.input{
+  border:  0px;
+  width: 391px;
+  height: 30px;
+
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.165em;
+
+  background: #F9F9F9;
+
+  color: #8B8B8B;
+}
+
+.inputBox{
+  margin-bottom: 35px;
+}
+
+.btnCart{
+  width: 400px;
+  height: 59px;
+
+  background: #C3FCB0;
+  border: 1px solid #E8DCDC;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+  margin: 35px 0px;
+
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: 0.555em;
+  text-transform: uppercase;
+
+  text-decoration: none;
+
+  color: #000000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.colorCart{
+  background: #FFC794;
+}
+

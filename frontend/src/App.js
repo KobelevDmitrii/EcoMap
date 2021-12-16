@@ -4,19 +4,22 @@
 */
 
 import React from 'react';
-import Header from './componens/Header';
-import Map from './componens/Map.js';
-import About from './componens/About';
-import Footer from './componens/Footer';
+import { Routes, Route } from "react-router-dom";
+import Login from '../src/Pages/login';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Main from './Pages/main'
 
 function App() {
   return (
     <div>
       <div className="wrapper">
         <Header></Header>
-        <Map></Map>
-        <About></About>
       </div>
+      <Routes>
+        <Route path="/" element={<Main/>}/>
+        <Route path="/login" element={<Login />} />
+      </Routes>
       <Footer></Footer>
     </div>
   );
