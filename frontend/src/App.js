@@ -9,6 +9,7 @@ import Login from '../src/Pages/login';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Main from './Pages/main'
+import Reg from './Pages/reg';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main/>}/>
         <Route path="/login" element={<Login />} />
+        <Route path="/reg" element={<Reg />}/>
       </Routes>
       <Footer></Footer>
     </div>
