@@ -6,6 +6,16 @@ const Places = require("../db/places");
 
 const router = express.Router();
 
+routes.route("/").get(async (req, res) => {
+  try {
+    const placesList = await Places.findAll();
+
+    return placesList;
+  } catch (error) {
+    throw new Error("get places: " + error);
+  }
+});
+
 const newPlaceSchema = Joi.object().keys({
   name: Joi.string().email().required(),
   coords: Joi.array().items(Joi.number()).required(),
@@ -13,7 +23,7 @@ const newPlaceSchema = Joi.object().keys({
   description: Joi.string(),
 });
 
-router.route("/create").post(auth, async (req, res) => {
+router.route("/").post(auth, async (req, res) => {
   try {
     const result = newPlaceSchema.validate(req.body);
     if (result.error) {

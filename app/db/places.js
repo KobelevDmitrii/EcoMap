@@ -15,6 +15,20 @@ const findById = async (id) => {
   }
 };
 
+const findAll = async () => {
+  try {
+    const query = {
+      text: "SELECT * FROM places",
+    };
+
+    const res = await db.query(query);
+
+    return res.rows;
+  } catch (error) {
+    throw new Error("find place by id: " + error);
+  }
+};
+
 const save = async (place) => {
   try {
     const query = {
