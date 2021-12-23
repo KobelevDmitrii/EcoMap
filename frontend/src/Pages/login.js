@@ -14,15 +14,17 @@ function login() {
         };
     }
 
-    let response = fetch('http://app:5000/users/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(show.user)
-    });
-    let result = response.json();
-    console.log(result.message);
+    async function post(){
+        let response = await fetch('http://app:5000/users/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(show.user)
+        });
+        let result = response.json();
+        console.log(result.message);
+    }
 
     return (
         <div className="login">
@@ -37,7 +39,7 @@ function login() {
                             <input type="password" placeholder="Пароль" name="password" value="" required className="input" onInput={show} ref={password}/>
                             <hr />
                         </div>
-                        <Link to="/" className="btnCart">Войти</Link>
+                        <Link to="/" className="btnCart" onClick={post}>Войти</Link>
                         <Link to="/reg" className="btnCart colorCart">Регистрация</Link>
                         <Outlet />
                     </div>

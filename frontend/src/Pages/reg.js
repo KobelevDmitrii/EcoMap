@@ -18,15 +18,17 @@ function Reg() {
         };
     }
 
-    let response = fetch('http://app:5000/users/register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(show.user)
-    });
-    let result = response.json();
-    console.log(result.message);
+    async function post(){
+        let response = await fetch('http://app:5000/users/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(show.user)
+        });
+        let result = response.json();
+        console.log(result.message);
+    }
 
     return (
         <div className="login"> 
@@ -49,7 +51,7 @@ function Reg() {
                             <input type="password" placeholder="Пароль" name="E-mail" required className="input"  onInput={show} ref={password}/>
                             <hr />
                         </div>
-                        <Link to="/" className="btnCart textBtn">Зарегестрироваться</Link>
+                        <Link to="/" className="btnCart textBtn" onClick={post}>Зарегестрироваться</Link>
                         <Outlet />
                     </div>
                 </div>
