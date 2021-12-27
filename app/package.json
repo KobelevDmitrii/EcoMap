@@ -12,6 +12,12 @@
     "web3-providers-http": "^1.5.3"
   },
   "scripts": {
-    "migrate": "./node_modules/.bin/node-pg-migrate"
+    "migrate": "./node_modules/.bin/node-pg-migrate",
+    "test": "mocha **/*.test.js",
+    "app-test": "mocha app.test.js"
+  },
+  "devDependencies": {
+    "mocha": "^9.1.3",
+    "supertest": "^6.1.6"
   }
 }
