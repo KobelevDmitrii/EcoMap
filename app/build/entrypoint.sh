@@ -9,6 +9,5 @@ done
 echo "PostgreSQL started"
 
 npm run migrate up
-npm run app-test
 
 exec "$@"
