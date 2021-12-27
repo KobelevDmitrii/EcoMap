@@ -10,14 +10,14 @@ router.route("/").get(async (req, res) => {
   try {
     const placesList = await Places.findAll();
 
-    return placesList;
+    return res.status(200).json(placesList);
   } catch (error) {
     throw new Error("get places: " + error);
   }
 });
 
 const newPlaceSchema = Joi.object().keys({
-  name: Joi.string().email().required(),
+  name: Joi.string().required(),
   coords: Joi.array().items(Joi.number()).required(),
   type: Joi.string(),
   description: Joi.string(),
@@ -36,9 +36,10 @@ router.route("/").post(auth, async (req, res) => {
 
     const newPlace = {
       name: name,
-      coords: coords,
+      coords: "(" + coords[0] + "," + coords[1] + ")",
       type: type,
       description: description,
+      verified: false,
     };
 
     const savedPlace = await Places.save(newPlace);

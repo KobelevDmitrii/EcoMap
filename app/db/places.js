@@ -32,7 +32,7 @@ const findAll = async () => {
 const save = async (place) => {
   try {
     const query = {
-      text: "INSERT INTO visits (name, coords, type, description, verified) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+      text: "INSERT INTO places (name, coords, type, description, verified) VALUES ($1, $2, $3, $4, $5) RETURNING *",
       values: [
         place.name,
         place.coords,
